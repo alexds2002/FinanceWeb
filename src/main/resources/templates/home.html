@@ -20,5 +20,16 @@
             </tr>
         </tbody>
     </table>
+
+    <h2>Add a New User</h2>
+    <form action="/addUser" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <button type="submit">Add User</button>
+    </form>
 </body>
 </html>
