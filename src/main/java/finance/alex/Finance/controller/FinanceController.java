@@ -29,6 +29,24 @@ public class FinanceController {
         return "home"; // This corresponds to `home.html` in the `templates` folder
     }
 
+    @GetMapping("/login")
+    public String loginPage(Model model) {
+        model.addAttribute("loginError", false);
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String processLogin(@RequestParam String username,
+            @RequestParam String password,
+            Model model) {
+        // Add authentication logic here
+        if (userService.authenticateUser(username, password)) {
+            return "redirect:/home";
+        }
+        model.addAttribute("loginError", true);
+        return "login";
+    }
+
     @PostMapping("/addUser")
     public String addUser(@RequestParam String name, @RequestParam int age) {
         User newUser = new User(name, age);
